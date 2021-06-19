@@ -3,10 +3,13 @@ CXXFLAGS=-Wall -g3
 LDFAGS=-lm
 
 main: main.cpp funciones.o 
-	$(CXX) $(CXXFLAGS) -o main main.cpp funciones.o $(LDFAGS)
+	$(CXX) $(CXXFLAGS) -o main main.cpp funciones.o producto.o $(LDFAGS)
 
 funciones.o: funciones.h funciones.cpp	
 	$(CXX) $(CXXFLAGS) -c funciones.cpp
+
+producto.o: producto.h producto.cpp
+	$(CXX) $(CXXFLAGS) -c producto.cpp
 
 
 clean: 

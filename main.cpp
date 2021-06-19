@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include "funciones.h"
+#include "producto.h"
 
 
 int main (int args, char** argv)
@@ -14,7 +15,7 @@ int main (int args, char** argv)
     chrono::duration<float,milli> duration = end - start;
     std::cout<<duration.count()<<"'ms"<<std::endl;
 
-    //dfdkjfdkfj
+    
    
     return EXIT_SUCCESS;
 }
