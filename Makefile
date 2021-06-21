@@ -17,6 +17,7 @@ clean:
 		rm -fr *.o main 
 
 .PHONY: dist
+
 dist: clean main
 	mkdir -p bin 
 	cp -r main bin/
