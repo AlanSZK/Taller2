@@ -2,7 +2,7 @@ CXX=g++
 CXXFLAGS=-Wall -g3
 LDFAGS=-lm
 
-main: main.cpp funciones.o 
+main: main.cpp funciones.o producto.o 
 	$(CXX) $(CXXFLAGS) -o main main.cpp funciones.o producto.o $(LDFAGS)
 
 funciones.o: funciones.h funciones.cpp	

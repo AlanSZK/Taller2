@@ -5,10 +5,13 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
+#include <map>
 
 #include "funciones.h"
 #include "producto.h"
 
+
+using namespace std;
 
 /**
  * @param argc cantidad de argumentos
@@ -22,11 +25,12 @@ int main (int argc, char** argv)
     auto start = chrono::system_clock::now();
     saludo();
 
-    vector<producto> productos; //Vector que contiene los productos de la lista extraida del csv.
+    std::vector<producto> productos; //Vector que contiene los productos de la lista extraida del csv.
   
     if (argc>1)
     {
-
+        bool primeraLinea=true;
+        
         std::string archivo(argv[1]);
         std::ifstream lectura(archivo);
 
@@ -35,17 +39,22 @@ int main (int argc, char** argv)
         {
             for (std::string linea; getline(lectura,linea) ;)
             {
-                std:vector<std::string> strProducto = obtenerdatos(linea);
+                if(primeraLinea==false)
+                {
+                    std::vector<std::string> strProducto = obtenerdatos(linea);
 
-                producto p (strProducto.at(0),atol(strProducto.at(1).c_str()),atoi(strProducto.at(2).c_str()), strProducto.at(3));
+                    producto p (strProducto.at(0),atol(strProducto.at(1).c_str()),atoi(strProducto.at(2).c_str()), strProducto.at(3));
 
-                productos.push_back(p);
+                    productos.push_back(p);
+                }
+                else
+                    primeraLinea=false;
 
             }
 
         }
 
-        
+
         
         integrantes();
         auto end = chrono::system_clock::now();
@@ -53,7 +62,7 @@ int main (int argc, char** argv)
         std::cout<<duration.count()<<"'ms"<<std::endl;
 
     }
-  
+
     
    
     return EXIT_SUCCESS;

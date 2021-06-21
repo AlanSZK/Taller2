@@ -7,15 +7,16 @@
 #include <stdlib.h>
 #include <map>
 
+#include "producto.h"
 
-using namespace std;
+
 
 
 
 void saludo();
 void integrantes();
 std::vector<std::string> obtenerdatos(std::string linea);
-
+int cantidadVentas (std::vector<producto> productos, std::string fecha);
 
 
 

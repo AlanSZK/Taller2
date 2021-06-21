@@ -56,6 +56,7 @@ std::vector<std::string> obtenerdatos(std::string linea){
     
     std::string comilla="\"";
     std::string nada="";
+
     while(getline(reem,item,';')){
         std::string dato=item;
         int pos=dato.find(comilla);
@@ -66,4 +67,25 @@ std::vector<std::string> obtenerdatos(std::string linea){
         arreglo.push_back(dato);
     }
     return arreglo;
+}
+
+int cantidadVentas (std::vector<producto> productos, std::string fecha)
+{
+    bool inicioFecha =false;
+    int cantidad = 0;
+
+    for(unsigned int i=0;i<productos.size();i++)
+    {
+        if(productos.at(i).getFecha() == fecha)
+        {
+            inicioFecha = true;
+            cantidad++;
+
+        }
+        else if (inicioFecha)
+        {
+            break;
+        }
+    }
+    return cantidad;
 }

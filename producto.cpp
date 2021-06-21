@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include <string>
 #include "producto.h"
@@ -17,4 +19,5 @@ producto::producto(std::string fecha, long sku, int cantidad, std::string descri
     this->cantidad = cantidad;
     this->descripcion = descripcion;
 }
+
 
