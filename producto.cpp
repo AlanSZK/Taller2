@@ -12,12 +12,9 @@ producto::producto()
 
 }
 
-producto::producto(std::string fecha, long sku, int cantidad, std::string descripcion)
+producto::producto(std::string fecha, int cantidad)
 {
     this->fecha = fecha;
-    this->sku = sku;
     this->cantidad = cantidad;
-    this->descripcion = descripcion;
 }
-
 

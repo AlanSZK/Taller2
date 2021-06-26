@@ -8,17 +8,15 @@
 class producto
 {
     private:
-        std::string fecha;
-        long sku;
-        int cantidad;
-        std::string descripcion;
+        std::string fecha; //Fecha de venta
+        int cantidad; //Cantidad total de productos vendidos en alguna fecha.
 
 
     public:
 
         //CONSTRUCTORES
         producto();
-        producto(std::string fecha, long sku, int cantidad, std::string descripcion);
+        producto(std::string fecha, int cantidad);
 
        
 
@@ -28,36 +26,22 @@ class producto
         {
             return this->fecha;
         }
-        long getSku()
-        {
-            return this->sku;
-        }
         int getCantidad()
         {
             return this->cantidad;
         }
-        std::string getDescripcion()
-        {
-            return this->descripcion;
-        }
+      
 
         //SETTERS
         void setFecha(std::string fecha)
         {
             this->fecha = fecha;
         }
-        void setSku(long sku)
-        {
-            this->sku = sku;
-        }
         void setCantidad(int cantidad)
         {
             this->cantidad = cantidad;
         }
-        void setDescripcion(std::string descripcion)
-        {
-            this->descripcion = descripcion;
-        }
+     
 
 
 
