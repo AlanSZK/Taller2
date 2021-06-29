@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 #include "funciones.h"
-#include "producto.h"
+#include "venta.h"
 
 
 using namespace std;
@@ -38,12 +38,13 @@ int main (int argc, char** argv)
     auto start = chrono::system_clock::now();
     saludo();
 
-    std::vector<producto> productos; //Vector que contiene los productos de la lista extraida del csv.
+    std::vector<venta> ventas; //Vector que contiene los productos de la lista extraida del csv.
   
     if (argc>1)
     {
         bool primeraLinea=true;
         bool primeraIgualacion=true;
+        int id = 1; //id que se incrementa para guardar ventas;
         std::string fecha;
 
         int cantidadVentas = 0; //Cantidad de ventas en un dia determinado
@@ -69,11 +70,13 @@ int main (int argc, char** argv)
                     
                     if(cortarFecha(strProducto.at(0)) != fecha)
                     {
-                        producto p (fecha,cantidadVentas);
-                        productos.push_back(p);
+                        venta v (id,fecha,cantidadVentas);
+                        ventas.push_back(v);
                         
                         fecha=cortarFecha(strProducto.at(0));
                         cantidadVentas = atoi(strProducto.at(2).c_str());
+
+                        id++;
 
                     }
                     else
@@ -88,9 +91,10 @@ int main (int argc, char** argv)
             }
 
         }
-
         
         integrantes();
+
+        std::cout<<"ULTIMO DÍA VENTA\n\nFecha:"<<ventas.at(ventas.size()-1).getId()<<"Cantidad:"<<ventas.at(ventas.size()-1).getCantidad()<<std::endl;
         auto end = chrono::system_clock::now();
         chrono::duration<float,milli> duration = end - start;
         std::cout<<duration.count()<<"'ms"<<std::endl;

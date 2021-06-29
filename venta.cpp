@@ -2,18 +2,19 @@
 
 #include <iostream>
 #include <string>
-#include "producto.h"
+#include "venta.h"
 
 using namespace std;
 
 //CONSTRUCTORES
-producto::producto()
+venta::venta()
 {
 
 }
 
-producto::producto(std::string fecha, int cantidad)
+venta::venta(int id, std::string fecha, int cantidad)
 {
+    this->id = id;
     this->fecha = fecha;
     this->cantidad = cantidad;
 }

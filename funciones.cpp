@@ -9,6 +9,8 @@
 #include <algorithm>
 
 #include "funciones.h"
+#include "venta.h"
+
 
 
 using namespace std;
@@ -69,17 +71,17 @@ std::vector<std::string> obtenerdatos(std::string linea){
     return arreglo;
 }
 
-int cantidadVentas (std::vector<producto> productos, std::string fecha)
+int cantidadVentas (std::vector<venta> ventas, std::string fecha)
 {
     bool inicioFecha =false;
     int cantidad = 0;
 
-    for(unsigned int i=0;i<productos.size();i++)
+    for(unsigned int i=0;i<ventas.size();i++)
     {
-        if(productos.at(i).getFecha() == fecha)
+        if(ventas.at(i).getFecha() == fecha)
         {
             inicioFecha = true;
-            cantidad++;
+            cantidad+=ventas.at(i).getCantidad();
 
         }
         else if (inicioFecha)
@@ -88,4 +90,15 @@ int cantidadVentas (std::vector<producto> productos, std::string fecha)
         }
     }
     return cantidad;
+}
+
+std::string cortarFecha (std::string fecha)
+{
+    std::string nuevaFecha;
+
+    int pos = fecha.find(" ");
+
+    nuevaFecha = fecha.substr(0, pos);
+
+    return nuevaFecha;
 }
