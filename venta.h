@@ -1,13 +1,14 @@
-#ifndef PRODUCTO_H
-#define PRODUCTO_H
+#ifndef VENTA_H
+#define VENTA_H
 
 #include <iostream>
 #include <string>
 
 
-class producto
+class venta
 {
     private:
+        int id; //Indice de 1 a n
         std::string fecha; //Fecha de venta
         int cantidad; //Cantidad total de productos vendidos en alguna fecha.
 
@@ -15,13 +16,17 @@ class producto
     public:
 
         //CONSTRUCTORES
-        producto();
-        producto(std::string fecha, int cantidad);
+        venta();
+        venta(int id, std::string fecha, int cantidad);
 
        
 
        
         //GETTERS
+        int getId()
+        {
+            return this->id;
+        }
         std::string getFecha()
         {
             return this->fecha;
@@ -33,6 +38,10 @@ class producto
       
 
         //SETTERS
+        void setId(int id)
+        {
+            this->id = id;
+        }
         void setFecha(std::string fecha)
         {
             this->fecha = fecha;

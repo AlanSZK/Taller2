@@ -2,14 +2,14 @@ CXX=g++
 CXXFLAGS=-Wall -g3
 LDFAGS=-lm
 
-main: main.cpp funciones.o producto.o 
-	$(CXX) $(CXXFLAGS) -o main main.cpp funciones.o producto.o $(LDFAGS)
+main: main.cpp funciones.o venta.o 
+	$(CXX) $(CXXFLAGS) -o main main.cpp funciones.o venta.o $(LDFAGS)
 
 funciones.o: funciones.h funciones.cpp	
 	$(CXX) $(CXXFLAGS) -c funciones.cpp
 
-producto.o: producto.h producto.cpp
-	$(CXX) $(CXXFLAGS) -c producto.cpp
+venta.o: venta.h venta.cpp
+	$(CXX) $(CXXFLAGS) -c venta.cpp
 
 
 clean: 

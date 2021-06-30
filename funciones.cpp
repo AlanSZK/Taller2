@@ -102,3 +102,35 @@ std::string cortarFecha (std::string fecha)
 
     return nuevaFecha;
 }
+
+void regresionLineal (vector<venta> ventas)
+{
+    float x,x2,y,xy,a,b;
+    int n = ventas.size();
+    int dias;
+    float prediccion;
+    
+    for(int i=0;i<n;i++)
+    {
+        x = x + ventas.at(i).getId();
+        x2 = x2 + (ventas.at(i).getId())*(ventas.at(i).getId());
+        y = y + ventas.at(i).getCantidad();
+        xy = xy + (ventas.at(i).getId() * ventas.at(i).getCantidad());
+
+
+    }
+
+      b = (n*xy - x*y)/(n*x2 - x*x);
+      a = (y - b*x)/n;
+
+      std::cout << "Ecuación de recta generada: y = " << a << " + " << b << "x"<<std::endl;
+
+      std:: cout << " Ingrese número de diás después de última fecha para mostrar cantidad predecida de ventas: ";
+      std::fflush(stdin);
+      std::cin >> dias;
+
+      prediccion = b + a*(n+dias);
+
+      std:: cout << "Cantidad:" << prediccion << " productos.";
+
+}

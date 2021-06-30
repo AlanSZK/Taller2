@@ -20,16 +20,6 @@ using namespace std;
  * @return Código de salida del programa
  */
 
-std::string cortarFecha (std::string fecha)
-{
-    std::string nuevaFecha;
-
-    int pos = fecha.find(" ");
-
-    nuevaFecha = fecha.substr(0, pos);
-
-    return nuevaFecha;
-}
 
 
 int main (int argc, char** argv)
@@ -46,6 +36,7 @@ int main (int argc, char** argv)
         bool primeraIgualacion=true;
         int id = 1; //id que se incrementa para guardar ventas;
         std::string fecha;
+        std::vector<std::string> strProducto ;
 
         int cantidadVentas = 0; //Cantidad de ventas en un dia determinado
 
@@ -59,7 +50,7 @@ int main (int argc, char** argv)
             {
                 if(primeraLinea==false)
                 {
-                    std::vector<std::string> strProducto = obtenerdatos(linea);
+                    strProducto = obtenerdatos(linea);
 
                     if(primeraIgualacion==true)
                     {
@@ -79,6 +70,8 @@ int main (int argc, char** argv)
                         id++;
 
                     }
+        
+                    
                     else
                     {
                         cantidadVentas+= atoi(strProducto.at(2).c_str());
@@ -90,11 +83,18 @@ int main (int argc, char** argv)
 
             }
 
+            venta v (id,fecha,cantidadVentas);
+            ventas.push_back(v);
+            
+     
         }
         
         integrantes();
 
-        std::cout<<"ULTIMO DÍA VENTA\n\nFecha:"<<ventas.at(ventas.size()-1).getId()<<"Cantidad:"<<ventas.at(ventas.size()-1).getCantidad()<<std::endl;
+        std::cout<<"ULTIMO DÍA VENTA\n\nFecha:"<<ventas.at(ventas.size()-1).getFecha()<<"\nCantidad:"<<ventas.at(ventas.size()-1).getCantidad()<<std::endl;
+        regresionLineal(ventas);
+    
+        std::cout<<std::endl << std::endl;
         auto end = chrono::system_clock::now();
         chrono::duration<float,milli> duration = end - start;
         std::cout<<duration.count()<<"'ms"<<std::endl;
