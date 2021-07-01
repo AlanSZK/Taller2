@@ -20,8 +20,6 @@ using namespace std;
  * @return Código de salida del programa
  */
 
-
-
 int main (int argc, char** argv)
 {
 
@@ -43,7 +41,7 @@ int main (int argc, char** argv)
         std::string archivo(argv[1]);
         std::ifstream lectura(archivo);
 
-        std::cout << " Leyendo archivo..." << std::endl;
+        std::cout << "Leyendo archivo..." << std::endl<<std::endl;
         if(lectura)
         {
             for (std::string linea; getline(lectura,linea) ;)
@@ -56,22 +54,15 @@ int main (int argc, char** argv)
                     {
                         fecha = cortarFecha(strProducto.at(0)); //Fecha correspondiente a día a contar
                         primeraIgualacion = false;
-
                     }    
-                    
                     if(cortarFecha(strProducto.at(0)) != fecha)
                     {
                         venta v (id,fecha,cantidadVentas);
-                        ventas.push_back(v);
-                        
+                        ventas.push_back(v); 
                         fecha=cortarFecha(strProducto.at(0));
                         cantidadVentas = atoi(strProducto.at(2).c_str());
-
                         id++;
-
                     }
-        
-                    
                     else
                     {
                         cantidadVentas+= atoi(strProducto.at(2).c_str());
@@ -82,17 +73,23 @@ int main (int argc, char** argv)
                     primeraLinea=false;
 
             }
-
             venta v (id,fecha,cantidadVentas);
             ventas.push_back(v);
-            
-     
         }
         
-        integrantes();
+        std::cout<<"Último día de venta"<<std::endl;
+        std::cout<<"Fecha: "<<ventas.at(ventas.size()-1).getFecha()<<std::endl;
+        std::cout<<"Cantidad:"<<ventas.at(ventas.size()-1).getCantidad()<<std::endl<<std::endl;
+        std::cout<<std::endl << std::endl;
 
-        std::cout<<"ULTIMO DÍA VENTA\n\nFecha:"<<ventas.at(ventas.size()-1).getFecha()<<"\nCantidad:"<<ventas.at(ventas.size()-1).getCantidad()<<std::endl;
+        std::cout<<"Regresión Lineal"<<std::endl;
         regresionLineal(ventas);
+        std::cout<<std::endl << std::endl;
+        
+        std::cout<<"Exponencial"<<std::endl;
+        exponencial(ventas);
+
+        integrantes();
     
         std::cout<<std::endl << std::endl;
         auto end = chrono::system_clock::now();

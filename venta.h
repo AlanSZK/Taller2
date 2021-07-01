@@ -8,9 +8,9 @@
 class venta
 {
     private:
-        int id; //Indice de 1 a n
-        std::string fecha; //Fecha de venta
-        int cantidad; //Cantidad total de productos vendidos en alguna fecha.
+        int id;             //Indice de 1 a n
+        std::string fecha;  //Fecha de venta
+        int cantidad;       //Cantidad total de productos vendidos en alguna fecha.
 
 
     public:
@@ -19,9 +19,6 @@ class venta
         venta();
         venta(int id, std::string fecha, int cantidad);
 
-       
-
-       
         //GETTERS
         int getId()
         {
@@ -36,7 +33,6 @@ class venta
             return this->cantidad;
         }
       
-
         //SETTERS
         void setId(int id)
         {
@@ -51,9 +47,6 @@ class venta
             this->cantidad = cantidad;
         }
      
-
-
-
 };
 
 #endif
